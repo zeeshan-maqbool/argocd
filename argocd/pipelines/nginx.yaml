@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-sync
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/zeeemughal/argocd
+    targetRevision: HEAD # or specify a specific commit hash or branch/tag name
+    path: argocd/apps
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOption: "--sync-timeout 60s"

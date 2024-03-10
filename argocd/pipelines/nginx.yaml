@@ -2,12 +2,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argocd-sync
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"     # Sync wave annotation to ensure the minimum time between syncs
+    argocd.argoproj.io/sync-options: "--sync-wait 60"  # Sync options annotation to set the sync wait time to 60 seconds
 spec:
   project: default
   source:
     repoURL: https://github.com/zeeemughal/argocd
     targetRevision: HEAD # or specify a specific commit hash or branch/tag name
-    path: argocd/apps
+    path: argocd
     directory:
       recurse: true
   destination:
@@ -17,5 +20,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - ApplyOption: "--sync-timeout 60s"

@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argocd
+  namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"     # Sync wave annotation to ensure the minimum time between syncs
     argocd.argoproj.io/sync-options: "--sync-wait 60"  # Sync options annotation to set the sync wait time to 60 seconds
@@ -14,8 +15,8 @@ spec:
     directory:
       recurse: true
   destination:
-    server: https://35.223.139.186
-    # server: https://kubernetes.default.svc
+    # server: https://35.223.139.186
+    server: https://kubernetes.default.svc
     namespace: argocd
   syncPolicy:
     automated:

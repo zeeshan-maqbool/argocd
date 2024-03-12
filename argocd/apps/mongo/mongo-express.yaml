@@ -50,3 +50,43 @@ spec:
         - containerPort:  8081
           name:  mongo-express
       restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-express
+  namespace: default
+spec:
+  selector:
+    app: mongo-express
+  type: ClusterIP
+  ports:
+  - name: mongo-express
+    protocol: TCP
+    port: 80
+    targetPort: 8081
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mongo-express-ingress
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
+spec:
+  tls:
+  - hosts:
+      - mongo.ithut.cloud
+    secretName: mongoexpress-tls
+  ngressClassName: nginx
+  rules:
+  - host: mongo.ithut.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mongo-express
+            port:
+              number: 80

@@ -78,7 +78,7 @@ spec:
   - hosts:
       - mongo.ithut.cloud
     secretName: mongoexpress-tls
-  ngressClassName: nginx
+  ingressClassName: nginx
   rules:
   - host: mongo.ithut.cloud
     http:

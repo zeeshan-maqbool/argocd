@@ -9,7 +9,7 @@ spec:
   tls:
     - hosts:
       - jenkins-gke.ithut.cloud
-      secretName: nginxletsencrypt
+      secretName: jenkins-letsencrypt
   ingressClassName: nginx
   rules:
   - host: jenkins-gke.ithut.cloud

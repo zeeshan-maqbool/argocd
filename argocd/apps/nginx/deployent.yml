@@ -39,7 +39,7 @@ kind: Ingress
 metadata:
   name: nginx
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
     - hosts:

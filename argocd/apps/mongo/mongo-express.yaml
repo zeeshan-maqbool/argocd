@@ -72,7 +72,7 @@ metadata:
   name: mongo-express-ingress
   namespace: default
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
   - hosts:

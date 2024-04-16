@@ -9,7 +9,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/zeeemughal/argocd
+    repoURL: https://github.com/zeeshan-maqbool/argocd
     targetRevision: HEAD # or specify a specific commit hash or branch/tag name
     path: argocd/pipelines
     directory:

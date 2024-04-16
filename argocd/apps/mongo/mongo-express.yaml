@@ -76,11 +76,11 @@ metadata:
 spec:
   tls:
   - hosts:
-      - mongo.ithut.cloud
+      - mongo.edx.ithut.cloud
     secretName: mongoexpress-tls
   ingressClassName: nginx
   rules:
-  - host: mongo.ithut.cloud
+  - host: mongo.edx.ithut.cloud
     http:
       paths:
       - path: /

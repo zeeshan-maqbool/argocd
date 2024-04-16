@@ -43,11 +43,11 @@ metadata:
 spec:
   tls:
     - hosts:
-      - test.ithut.cloud
+      - nginx.edx.ithut.cloud
       secretName: nginxletsencrypt
   ingressClassName: nginx
   rules:
-  - host: test.ithut.cloud
+  - host: nginx.edx.ithut.cloud
     http:
       paths:
       - path: /

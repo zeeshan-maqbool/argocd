@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: jenkins
+  name: atlantis
   namespace: argocd
 spec:
   project: default
@@ -13,9 +13,9 @@ spec:
     helm:
       values: |-
         github:
-          user: {{ configMap "atlantis-credentials" "github-user" }}
-          token: {{ configMap "atlantis-credentials" "github-token" }}
-          secret: {{ configMap "atlantis-credentials" "github-secret" }}
+          user: foo
+          token: bar
+          secret: test
     chart: atlantis
   destination:
     server: 'https://kubernetes.default.svc'

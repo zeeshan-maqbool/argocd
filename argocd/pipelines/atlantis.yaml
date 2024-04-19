@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Pipeline
+metadata:
+  name: atlantis-deploy-pipeline
+spec:
+  stages:
+  - name: deploy
+    steps:
+    - name: helm-deploy
+      helm:
+        chart: runatlantis/atlantis
+        repository:
+          url: https://runatlantis.github.io/helm-charts
+        values:
+          github:
+             user: {{ .secret.atlantis-credentials.github-user }}
+            token: {{ .secret.atlantis-credentials.github-token }}
+            secret: {{ .secret.atlantis-credentials.github-secret }}
+       releaseName: atlantis
+        targetNamespace: default
